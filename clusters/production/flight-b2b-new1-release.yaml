@@ -1,18 +1,17 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
 metadata:
-  name: flight-b2b-new1
-  namespace: default
+  name: flight-hotel-app
+  namespace: flux-system
 spec:
   interval: 1m
-  releaseName: flight-b2b-new1
-  chart:
-    spec:
-      chart: ./helm-charts/flight-hotel-app
-      sourceRef:
-        kind: GitRepository
-        name: flight-hotel-app
-        namespace: flux-system
-  valuesFrom:
-    - kind: ConfigMap
-      name: flight-b2b-new1-values
+  url: https://github.com/malikakbar-ctrl/flight-hotel-automation
+  ref:
+    branch: main
+  ignore: |
+    # Ignore everything except the chart path
+    /*
+    !/helm-charts/
+    !/helm-charts/flight-hotel-app
+
+
