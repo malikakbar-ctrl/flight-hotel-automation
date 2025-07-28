@@ -1,0 +1,11 @@
+appName: "flight-b2b-new1"
+image:
+  repository: "yourrepo/flight-app"
+  tag: "v1.0.0"
+domain: "flight-b2b-new1.yourdomain.com"
+tlsIssuer: "letsencrypt-prod"
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  cpuUtilization: 60

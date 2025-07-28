@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flight-b2b-new1
+  namespace: default
+spec:
+  interval: 1m
+  releaseName: flight-b2b-new1
+  chart:
+    spec:
+      chart: ./helm-charts/flight-hotel-app
+      sourceRef:
+        kind: GitRepository
+        name: flight-hotel-app
+        namespace: flux-system
+  valuesFrom:
+    - kind: ConfigMap
+      name: flight-b2b-new1-values
