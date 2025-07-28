@@ -5,6 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
+<<<<<<< HEAD
   url: https://github.com/malikakbar-ctrl/flight-hotel-automation
   ref:
     branch: main
@@ -15,3 +16,25 @@ spec:
     !/helm-charts/flight-hotel-app
 
 
+=======
+  releaseName: flight-b2b-new1
+  chart:
+    spec:
+      chart: ./helm-charts/flight-hotel-app
+      sourceRef:
+        kind: GitRepository
+        name: flight-hotel-app
+        namespace: flux-system
+  values:
+    appName: "flight-b2b-new1"
+    image:
+      repository: "yourrepo/flight-app"
+      tag: "latest"
+    domain: "flight-b2b-new1.yourdomain.com"
+    tlsIssuer: "letsencrypt-prod"
+    autoscaling:
+      enabled: true
+      minReplicas: 2
+      maxReplicas: 10
+      cpuUtilization: 60
+>>>>>>> 1f1b325d76b3981349340b80146abdf171eba50f
